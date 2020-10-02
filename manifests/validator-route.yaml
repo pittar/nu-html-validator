@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: validator
+    app.kubernetes.io/component: validator
+    app.kubernetes.io/instance: validator
+    app.kubernetes.io/part-of: validator
+  name: validator
+spec:
+  port:
+    targetPort: 8888-tcp
+  to:
+    kind: Service
+    name: validator
+    weight: 100
+  wildcardPolicy: None
